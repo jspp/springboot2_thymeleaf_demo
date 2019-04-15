@@ -5,31 +5,71 @@
 <body>
 <div class="logo_box">
 
-    <h3>基础语法</h3>
+    <h3 style="text-align: left">1、变量表达式  ${}</h3>
+    {userIdStr}： <span th:text="${userIdStr}"></span> <br/>
 
-    <form>
-        <div class="input_outer">
-            <span class="u_user"></span>
-            <input  class="text" type="text" th:placeholder="#{user.username}">
-        </div>
-        <div class="input_outer">
-            <span class="us_uer"></span>
-            <input  class="text" type="password" th:placeholder="#{user.password}">
-        </div>
-    </form>
+    <h3 style="text-align: left">2、对象直接取值:${xx.yy}</h3>
+    <span>使用方法：直接使用th:xx = "${}" 获取对象属性</span>
+    ${user.userName}： <span th:text="${user.userName}"></span> <br/>
+    ${user.userId}： <span th:alt-title="${user.userId}" th:text="${user.birthday}"></span> <br/>
+
+    <h3 style="text-align: left">3、选择变量表达式 *{}</h3>
+    <span>使用方法：首先通过th:object 获取对象，然后使用th:xx = "*{}"获取对象属性。</span>
+    <div th:object="${user}">
+        *{userName}： <span th:text="*{userName}"></span> <br/>
+        *{birthday}: <span th:text="*{birthday}"></span> <br/>
+    </div>
+
+    <h3 style="text-align: left">4、链接表达式 @{}</h3>
+    <span>使用方法：通过链接表达式@{}直接拿到应用路径，然后拼接静态资源路径</span><br/>
+    @{/imgs/111123.png}： <img th:src="@{/imgs/111123.png}" width="120" height="120" />
+
+    <h3 style="text-align: left">5、国际化 #{msg} </h3>
+    <span>即通常的国际化属性：#{msg} 用于获取国际化语言翻译值 </span>
+
+    <h3 style="text-align: left">6、其他表达式 </h3>
+    <span>在基础语法中，默认支持字符串连接、数学运算、布尔逻辑和三目运算等 </span><br/>
+    ${'I am '+(user.userName!=null?user.userName:'NoBody')}：<span th:text="${'I am '+(user.userName!=null?user.userName:'NoBody')}"> </span><br/>
+    ${112+110>0}：<span th:text="${112+110>0}"> </span><br/>
+
+    <h3 style="text-align: left">7、内置对象 </h3>
+    <span>在基础语法中，默认支持字符串连接、数学运算、布尔逻辑和三目运算等 </span><br/>
+    ${#locale}：<span th:text=" ${#locale}"> </span><br/>
+    ${#request.serverName}：<span th:text=" ${#request.serverName}"> </span><br/>
+    ${#session}：<span th:text=" ${#session}"> </span><br/>
+
+    <h3 style="text-align: left">8、遍历 </h3>
+    <span>在基础语法中，默认支持字符串连接、数学运算、布尔逻辑和三目运算等。如果缺省状态变量名，则迭代器会默认帮我们生成以变量名开头的状态变量 xxStat </span><br/>
+    <div th:each="us,stat:${userList}">
+        下标：<span th:text="${stat.index}"/>  &nbsp;&nbsp;&nbsp;  序号：<span th:text="${stat.count}"/>  &nbsp;&nbsp;&nbsp; <span th:text=" ${us.userName}"> </span> &nbsp;&nbsp;&nbsp;<span th:text=" ${us.userId}"> </span><br/>
+    </div>
+
+    <h3 style="text-align: left">9、条件判断 </h3>
+    <span th:if="${userList}">userList  存在 </span> <br/>
+    <span th:unless="${userList}">userList  不存在</span>
+
+    <h3 style="text-align: left">10、日期格式化 </h3>
+    ${#dates.format(user.birthday,'yyyy-MM-dd')}:<span th:text="${#dates.format(user.birthday,'yyyy-MM-dd')}"></span>
+
+    <h3 style="text-align: left">11、JS 相关处理  内联写法 </h3>
+
+
+    <h3 style="text-align: left">12、片段表达式 ~{} </h3>
+    <span>
+
+   </span>
+    
 </div>
 
+  <script th:inline="javascript">
+    var user = [[${user}]];
+    var APP_PATH = [[${#request.getContextPath()}]];
+    var LANG_COUNTRY = [[${#locale.getLanguage()+'_'+#locale.getCountry()}]];
+    console.log(APP_PATH);
+    console.log(LANG_COUNTRY);
+  </script>
 
-<script th:inline="javascript">
-    //选中语言
-    $("#locale").find('option[value="' + LANG_COUNTRY + '"]').attr('selected', true);
-    //切换语言
-    $("#locale").change(function () {
-        $.get(ROOT + '/?lang=' + $("#locale").val(), function () {
-            location.reload();
-        });
-    });
-</script>
+
 <style>
     *, *:after, *:before {
         -webkit-box-sizing: border-box;
@@ -57,15 +97,13 @@
         text-align: center;
     }
     .logo_box {
-        width: 400px;
-        height: 500px;
+        width: 1200px;
+        height: 1000px;
         padding: 35px;
         color: #EEE;
         position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -200px;
-        margin-top: -250px;
+        left: 10%;
+        top: 10%;
     }
     .logo_box h3 {
         text-align: center;
@@ -128,14 +166,6 @@
         font-size: 20px;
         border-radius: 50px;
         background: #0096e6;
-    }
-    #username {
-        color: #FFFFFF !important
-    }
-    #password {
-        color: #FFFFFF !important;
-        position: absolute;
-        z-index: 100;
     }
 </style>
 
