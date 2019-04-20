@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="common/header::header_fragment"></div>
+
+<div class="logo_box">
+页面内容
+</div>
+
+<div th:replace="common/footer::footer_fragment"></div>
+
+</body>
+<script th:inline="javascript" type="text/javascript">
+    $(function () {
+        console.log("Jquer 初始化成功了");
+    })
+</script>
+
+</html>
