@@ -62,7 +62,7 @@
 </div>
 
   <script th:inline="javascript">
-    var user = [[${user}]];
+    var user = [[${pageImport}]];
     var APP_PATH = [[${#request.getContextPath()}]];
     var LANG_COUNTRY = [[${#locale.getLanguage()+'_'+#locale.getCountry()}]];
     console.log(APP_PATH);

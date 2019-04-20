@@ -1,4 +1,4 @@
-package com.jf.web.user;
+package com.jf.web.pageImport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +22,13 @@ public class UserController {
     @RequestMapping("/userInfo")
     public String userInfo(HttpServletRequest request){
         logger.info(" ★ ★★★ /userInfo   ★ ★★★  ");
-        return "user/userInfo";
+        return "pageImport/userInfo";
     }
 
     @RequestMapping("/userInfo02")
     public String userInfo02(HttpServletRequest request){
         logger.info(" ★ ★★★ /userInfo02   ★ ★★★  ");
-        return "user/userInfo02";
+        return "pageImport/userInfo02";
     }
 
 }
