@@ -16,5 +16,5 @@
 在基础语法中，默认支持字符串连接、数学运算、布尔逻辑和三目运算等。例如：
 <input name="name" th:value="${'I am '+(user.name!=null?user.name:'NoBody')}"/>
 
-### 内置对象
+#### 国际化 服务器路径
  
