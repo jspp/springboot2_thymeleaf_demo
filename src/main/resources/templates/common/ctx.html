@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="ctx_">
+    <script th:inline="javascript">
+        var jsctx = [[${#servletContext.contextPath}]];
+    </script>
+</div>
+</html>

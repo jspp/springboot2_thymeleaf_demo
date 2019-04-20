@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<title> 国际化demo</title>
+<div class="logo_box">
+
+  <h1>国际化demo</h1>
+    <span th:text="#{user.welcome}"></span> --  <span th:text="#{user.title}"></span>
+</div>
+
+<br/>
+<a th:href="${#request.contextPath}+'/i18n?lang_=zh_CN'">中文</a><br/><br/>
+<a th:href="${#request.contextPath}+'/i18n?lang_=en_US'">英文</a><br/><br/>
+<a th:href="@{'/i18n?lang_=zh_TW'}">台湾</a>
+
+</body>
+
+
+</html>

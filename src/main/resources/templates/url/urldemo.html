@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<title> 页面路径获取写法</title>
+<div th:insert="~{common/basepath::basepath_}"></div>
+<div th:replace="~{common/ctx::ctx_}"></div>
+<div class="logo_box">
+
+  <h1>页面路径获取写法</h1>
+    <span th:text="#{user.welcome}"></span> --  <span th:text="#{user.title}"></span>
+</div>
+
+<br/>
+<h1>HTML  写法</h1>
+<a href="/url/demo?lang_=zh_CN">中文</a><br/><br/>
+<a href="/url/demo?lang_=en_US">英文</a><br/><br/>
+<a href="/url/demo?lang_=zh_TW">台湾</a><br/>
+<h1>JS  写法</h1>
+<a href="javascript:window.location.href=jsctx+'/url/demo?lang_=zh_CN'">中文</a><br/><br/>
+<a href="javascript:window.location.href=jsctx+'/url/demo?lang_=en_US'">英文</a><br/><br/>
+<a href="javascript:window.location.href=jsctx+'/url/demo?lang_=zh_TW'">台湾</a><br/>
+<h1>默认  写法</h1>
+<a href="/url/demo?lang_=zh_CN">中文</a><br/><br/>
+<a href="/url/demo?lang_=en_US">英文</a><br/><br/>
+<a href="/url/demo?lang_=zh_TW">台湾</a><br/>
+
+
+</body>
+
+
+</html>
