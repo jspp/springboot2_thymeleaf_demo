@@ -41,7 +41,6 @@ public class IndexController {
         user.setAge(10);
         user.setUserId(UUID.randomUUID().toString());
         user.setBirthday(DateFormatUtils.format(new Date(),"yyyy-MM-dd HH:mm:ss"));
-        request.setAttribute("pageImport",user);
         users.add(user);
 
         User user2 = new User();
@@ -67,7 +66,7 @@ public class IndexController {
 
 
         request.setAttribute("userIdStr",user.getUserId());
-        request.setAttribute("pageImport",user);
+        request.setAttribute("user",user);
         request.setAttribute("userList",users);
 
         return "index";
