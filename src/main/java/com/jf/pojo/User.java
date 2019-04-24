@@ -1,5 +1,7 @@
 package com.jf.pojo;
 
+import java.util.Date;
+
 /**
  * ouyangjie
  * 2019/4/10
@@ -14,6 +16,11 @@ public class User {
     private Integer age;
 
     private String birthday;
+
+    /**
+     * 时间格式
+     */
+    private Date createTime;
 
 
     public String getUserName() {
@@ -46,5 +53,13 @@ public class User {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
