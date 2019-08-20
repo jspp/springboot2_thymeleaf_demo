@@ -58,6 +58,9 @@
     <h3 style="text-align: left">12、片段表达式 ~{} </h3>
     <a  href="/userInfo">查看demo</a>
 
+    <h3 style="text-align: left">13、自定义国际化表达式 ${#lang.getVal('111')} </h3>
+    <span th:text="${@qiange.getVal('111')}"></span>
+
     
 </div>
 
@@ -65,8 +68,10 @@
     var user = [[${pageImport}]];
     var APP_PATH = [[${#request.getContextPath()}]];
     var LANG_COUNTRY = [[${#locale.getLanguage()+'_'+#locale.getCountry()}]];
+    var qiangeDemo = [[${@qiange.getVal('111')}]];
     console.log(APP_PATH);
     console.log(LANG_COUNTRY);
+    console.log(qiangeDemo);
   </script>
 
 

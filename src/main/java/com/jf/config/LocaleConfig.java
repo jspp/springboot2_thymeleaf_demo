@@ -27,7 +27,6 @@ public class LocaleConfig {
         localeResolver.setDefaultLocale(Locale.US);
         return localeResolver;
     }
-
     /**
      * 默认拦截器 其中lang表示切换语言的参数名
      */
